@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Encode 🚀</title><style>body{display:flex;justify-content:center;align-items:center;height:100vh;margin:0;background:#f4f4f9;font-family:Arial,sans-serif}.container{text-align:center;background:#fff;padding:20px;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,.1);width:90%;max-width:400px}input[type=password],input[type=text]{width:calc(100% - 20px);padding:10px;margin-bottom:20px;border:1px solid #ddd;border-radius:5px;font-size:16px}button{background:#6200ee;color:#fff;padding:10px 15px;border:none;border-radius:5px;cursor:pointer;font-size:16px;width:100%}button:hover{background:#4500b8}.output{margin-top:20px;padding:10px;background:#e0f7fa;border:1px solid #ddd;border-radius:5px;cursor:pointer;word-wrap:break-word}.tooltip{font-size:12px;color:#4caf50;display:none}</style></head><body><div class="container"><h2>Make It Unhackable 🚀</h2><input type="password" id="inputField" placeholder="Enter Pass"> <input type="text" id="keyField" placeholder="Master Enc. Key (optional)"><button onclick="encodeText()">Encrypt</button><div id="output" class="output" onclick="copyToClipboard()" style="display:none"></div><div id="tooltip" class="tooltip">Copied to clipboard!</div></div><script>const defaultKey = "UUG+0tKDykAO0z84moSYuAlFBIHT0NNAIF5fh7LhsO4cbK7C7FM+oA"; 
+
+        function encryptText(text, key) {
+            let encrypted = '';
+            for (let i = 0; i < text.length; i++) {
+                const keyChar = key.charCodeAt(i % key.length); 
+                const inputChar = text.charCodeAt(i);
+                const encryptedChar = inputChar ^ keyChar; 
+                encrypted += String.fromCharCode(encryptedChar); 
+            }
+            return btoa(encrypted); 
+        }
+
+        function encodeText() {
+            const inputText = document.getElementById('inputField').value;
+            const customKey = document.getElementById('keyField').value || defaultKey; 
+            if (!inputText) return;
+
+            const encryptedOutput = encryptText(inputText, customKey);
+            const finalOutput = `Unack@b1e${encryptedOutput}`;
+
+            const outputElement = document.getElementById('output');
+            outputElement.textContent = finalOutput;
+            outputElement.style.display = 'block';
+
+            const tooltip = document.getElementById('tooltip');
+            tooltip.style.display = 'none'; 
+        }
+
+        function copyToClipboard() {
+            const outputElement = document.getElementById('output');
+            const tooltip = document.getElementById('tooltip');
+
+            navigator.clipboard.writeText(outputElement.textContent).then(() => {
+                tooltip.style.display = 'block'; 
+                setTimeout(() => tooltip.style.display = 'none', 1500); 
+            });
+        }</script></body></html>
